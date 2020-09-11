@@ -29,8 +29,9 @@ class post(db.Model):
     content = db.column(db.string(20), nullable=False)
     user_id = db.column(db.integer, db.foreignkey('user.id'), nullable=False)
 
-     def __repr__(self):
+    def __repr__(self):
         return f"user('{self.title}', '{self.date_posted}')"
+        
 
 
 
