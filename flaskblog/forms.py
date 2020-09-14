@@ -33,10 +33,6 @@ class LoginForm(FlaskForm):
     remember = BooleanField('Remember Me')
     submit = SubmitField('Login')
 
-    def validate_email(self, email):
-
-        user = user.query.filter_by(username=email.data).first()
-        if user:
-            raise ValidationError('Username taken! please try another')
+    
         
 
