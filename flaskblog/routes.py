@@ -4,6 +4,7 @@ from flaskblog.forms import RegistrationForm, LoginForm
 from flaskblog.models import User, Post
 from flask_login import login_user, current_user, logout_user, login_required
 
+
 posts = [
     {
         'author': 'Corey Schafer',
@@ -41,7 +42,7 @@ def register():
         user = User(username=form.username.data, email=form.email.data, password=hashed_password)
         db.session.add(user)
         db.session.commit()
-        flash("Your account has been created! You are now able to login", 'success')
+        flash('Your account has been created! You are now able to log in', 'success')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
@@ -61,6 +62,7 @@ def login():
             flash('Login Unsuccessful. Please check email and password', 'danger')
     return render_template('login.html', title='Login', form=form)
 
+
 @app.route("/logout")
 def logout():
     logout_user()
@@ -69,6 +71,5 @@ def logout():
 
 @app.route("/account")
 @login_required
-def account():     
-    image_file = url_for('static', filename='profile_pictures/' + current_user.image_file)
-    return render_template('account.html', title='account', image_file=image_file)
+def account():
+    return render_template('account.html', title='Account')
