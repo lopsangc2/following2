@@ -70,5 +70,9 @@ def logout():
 @app.route("/account")
 @login_required
 def account():    
-    image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
+<<<<<<< HEAD
+    image_file = url_for('static', filename='profile_pictures/' + current_user.image_file)
     return render_template('account.html', title='account', image_file=image_file)
+=======
+    return render_template('account.html', title='account')
+>>>>>>> c57438e... final of corey scafer user authentication
